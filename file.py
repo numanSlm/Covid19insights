@@ -1,15 +1,25 @@
 import os
 import shutil as sh
 count=0
-for file in os.listdir("C:\covid\csse_covid_19_daily_reports_us"):
+
+
+#Path of directory where all csv files exists
+
+for file in os.listdir("/home/num/Numan/LTI/newData/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"):
     if file.endswith(".csv"):
         month=file[0:2]
-        date=file[3:5]
+        #dare=file Slice
+        year=file[6:10]
+        print(month+year)
+        
+        if not os.path.exists("/home/num/Numan/LTI/newData/ncov19/csse_covid_19_daily_reports/"+year):
+            os.mkdir("/home/num/Numan/LTI/newData/ncov19/csse_covid_19_daily_reports//"+year)
+
+        if not os.path.exists("/home/num/Numan/LTI/newData/ncov19/csse_covid_19_daily_reports/"+year+"/"+month): 
+            os.mkdir("/home/num/Numan/LTI/newData/ncov19/csse_covid_19_daily_reports//"+year+"/"+month)      
+
+        sh.copy("/home/num/Numan/LTI/newData/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports/"+file,"/home/num/Numan/LTI/newData/ncov19/ csse_covid_19_daily_reports/"+year+"/"+month+"/"+file)
+        
         count+=1
-        if not os.path.exists("C:\covid\datasets\External_Stage\csse_covid_19_daily_reports_us/"+month):
-            os.mkdir("C:\covid\datasets\External_Stage\csse_covid_19_daily_reports_us\\"+month)
-        if not os.path.exists("C:\covid\datasets\External_Stage\csse_covid_19_daily_reports_us/"+month+"\\"+date):
-            os.mkdir("C:\covid\datasets\External_Stage\csse_covid_19_daily_reports_us\\"+month+"\\"+date)        
-        sh.copy("C:\covid\csse_covid_19_daily_reports_us/"+file,"C:\covid\datasets\External_Stage\csse_covid_19_daily_reports_us/"+month+"/"+date+"/"+file)
         
 print(count)

@@ -14,3 +14,8 @@ As a snowflake developer/ consultant, you are helping the data analytical team t
 dataset using snowflake , history data is loaded and current data is loaded with snowpipes
 into database , Merge all the datasets based on the common key and create a single table and
 check for noise or missing data.
+
+See project presentation 
+[here](Documentation/Snowflake_Healthcare_Presentation.pdf)
+
+For more detailed documentation and project walk-through, refer this [report](Documentation/Covid19insights_Full_Report.pdf)
